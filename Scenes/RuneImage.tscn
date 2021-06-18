@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Runes/runes_Gathering.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/RuneImage.gd" type="Script" id=2]
+
+[node name="RuneImage" type="TextureRect"]
+margin_right = 4096.0
+margin_bottom = 4096.0
+rect_min_size = Vector2( 139, 195 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

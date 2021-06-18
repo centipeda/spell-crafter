@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scenes/RuneCard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/SpellEditor.gd" type="Script" id=2]
+[ext_resource path="res://SpellbookTheme/SpellbookTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Fonts/Wizard Of The Moon.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Runes/runes_Dispersal.png" type="Texture" id=5]
+[ext_resource path="res://Runes/runes_Gathering.png" type="Texture" id=6]
+[ext_resource path="res://Imports/Fantasy_GUI/UI board Large  parchment.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/SpellDisplay.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/RuneImage.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/RuneInfo.gd" type="Script" id=10]
+[ext_resource path="res://Runes/runes_FlameTransmutation.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="SpellEditor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellEditorContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellView" type="TextureRect" parent="SpellEditorContainer"]
+margin_right = 1920.0
+margin_bottom = 881.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+stretch_mode = 1
+
+[node name="TopBox" type="VBoxContainer" parent="SpellEditorContainer/SpellView"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 75.0
+margin_top = 56.0
+margin_right = -82.0
+margin_bottom = -73.0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellDisplay" type="GridContainer" parent="SpellEditorContainer/SpellView/TopBox"]
+margin_right = 1763.0
+margin_bottom = 655.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 12
+script = ExtResource( 8 )
+rune_image = ExtResource( 9 )
+
+[node name="RuneInfo" type="RichTextLabel" parent="SpellEditorContainer/SpellView/TopBox"]
+margin_top = 659.0
+margin_right = 1763.0
+margin_bottom = 752.0
+size_flags_horizontal = 9
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.63916, 0.63916, 0.63916, 1 )
+fit_content_height = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SpellEditorContainer"]
+margin_top = 885.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="RuneSelect" type="HBoxContainer" parent="SpellEditorContainer/HBoxContainer"]
+margin_right = 1773.0
+margin_bottom = 195.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Gathering" parent="SpellEditorContainer/HBoxContainer/RuneSelect" instance=ExtResource( 1 )]
+margin_left = 674.0
+margin_right = 813.0
+icon = ExtResource( 6 )
+rune = 1
+
+[node name="Dispersal" parent="SpellEditorContainer/HBoxContainer/RuneSelect" instance=ExtResource( 1 )]
+margin_left = 817.0
+margin_right = 956.0
+icon = ExtResource( 5 )
+rune = 2
+
+[node name="FlameTransmutation" parent="SpellEditorContainer/HBoxContainer/RuneSelect" instance=ExtResource( 1 )]
+margin_left = 960.0
+margin_right = 1099.0
+icon = ExtResource( 11 )
+rune = 3
+
+[node name="ConfirmSpell" type="Button" parent="SpellEditorContainer/HBoxContainer"]
+margin_left = 1777.0
+margin_right = 1920.0
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Finish"
+
+[connection signal="mouse_exited" from="SpellEditorContainer/HBoxContainer/RuneSelect/Gathering" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_exit"]
+[connection signal="rune_clicked" from="SpellEditorContainer/HBoxContainer/RuneSelect/Gathering" to="SpellEditorContainer/SpellView/TopBox/SpellDisplay" method="_on_rune_clicked"]
+[connection signal="rune_entered" from="SpellEditorContainer/HBoxContainer/RuneSelect/Gathering" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_changed"]
+[connection signal="mouse_exited" from="SpellEditorContainer/HBoxContainer/RuneSelect/Dispersal" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_exit"]
+[connection signal="rune_clicked" from="SpellEditorContainer/HBoxContainer/RuneSelect/Dispersal" to="SpellEditorContainer/SpellView/TopBox/SpellDisplay" method="_on_rune_clicked"]
+[connection signal="rune_entered" from="SpellEditorContainer/HBoxContainer/RuneSelect/Dispersal" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_changed"]
+[connection signal="mouse_exited" from="SpellEditorContainer/HBoxContainer/RuneSelect/FlameTransmutation" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_exit"]
+[connection signal="rune_clicked" from="SpellEditorContainer/HBoxContainer/RuneSelect/FlameTransmutation" to="SpellEditorContainer/SpellView/TopBox/SpellDisplay" method="_on_rune_clicked"]
+[connection signal="rune_entered" from="SpellEditorContainer/HBoxContainer/RuneSelect/FlameTransmutation" to="SpellEditorContainer/SpellView/TopBox/RuneInfo" method="_on_rune_changed"]
+[connection signal="pressed" from="SpellEditorContainer/HBoxContainer/ConfirmSpell" to="." method="on_spell_confirmed"]

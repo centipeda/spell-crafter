@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/RuneCard.gd" type="Script" id=1]
+
+[node name="RuneCard" type="Button"]
+margin_left = 0.943848
+margin_right = 139.944
+margin_bottom = 195.0
+rect_min_size = Vector2( 139, 195 )
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_rune_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_RuneCard_pressed"]
