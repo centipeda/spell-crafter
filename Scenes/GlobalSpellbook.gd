@@ -45,4 +45,18 @@ const RUNE_IMG = {
     RUNE.TRANSMUTE_WIND : "runes/runes_Transmutation.png",
    }
 
+const ELEM_ANIM = {
+    ELEMENT.FLAME : "elem_fire",
+    ELEMENT.WATER : "elem_water",
+    ELEMENT.PURE : "elem_null",
+    ELEMENT.WIND : "elem_wind",
+    ELEMENT.EARTH : "elem_earth"
+}
+
+const SHAPE_ANIM = {
+    SHAPE.NONE : "shape_cloud",
+    SHAPE.SPHERE : "shape_sphere",
+    SHAPE.WALL : "shape_wall"
+   }
+
 var spell_runes = []

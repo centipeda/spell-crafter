@@ -1,0 +1,91 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=26 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "elem_earth"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "elem_fire"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "elem_null"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "elem_water"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "elem_wind"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+xfade_time = 1.0
+
+[resource]
+states/elem_earth/node = SubResource( 1 )
+states/elem_earth/position = Vector2( 659.5, 266.504 )
+states/elem_fire/node = SubResource( 2 )
+states/elem_fire/position = Vector2( 657.5, 91.5 )
+states/elem_null/node = SubResource( 3 )
+states/elem_null/position = Vector2( 908, 196.75 )
+states/elem_water/node = SubResource( 4 )
+states/elem_water/position = Vector2( 289.875, 89.6875 )
+states/elem_wind/node = SubResource( 5 )
+states/elem_wind/position = Vector2( 282.5, 267.502 )
+transitions = [ "elem_null", "elem_fire", SubResource( 6 ), "elem_fire", "elem_null", SubResource( 7 ), "elem_earth", "elem_null", SubResource( 8 ), "elem_null", "elem_earth", SubResource( 9 ), "elem_null", "elem_wind", SubResource( 10 ), "elem_wind", "elem_null", SubResource( 11 ), "elem_water", "elem_null", SubResource( 12 ), "elem_null", "elem_water", SubResource( 13 ), "elem_water", "elem_wind", SubResource( 14 ), "elem_wind", "elem_water", SubResource( 15 ), "elem_water", "elem_fire", SubResource( 16 ), "elem_fire", "elem_water", SubResource( 17 ), "elem_fire", "elem_earth", SubResource( 18 ), "elem_earth", "elem_fire", SubResource( 19 ), "elem_earth", "elem_wind", SubResource( 20 ), "elem_wind", "elem_earth", SubResource( 21 ), "elem_wind", "elem_fire", SubResource( 22 ), "elem_fire", "elem_wind", SubResource( 23 ), "elem_water", "elem_earth", SubResource( 24 ), "elem_earth", "elem_water", SubResource( 25 ) ]
+start_node = "elem_null"
+graph_offset = Vector2( 0, 25.4022 )

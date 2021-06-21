@@ -1,6 +1,591 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Spell.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Elements.tres" type="AnimationNodeStateMachine" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "elem_earth"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.286275, 0.239216, 0.0392157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 0.192157, 0.192157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.694118, 0.921569, 0.713726, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "elem_water"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.192157, 0.517647, 0.976471, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "elem_wind"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.270588, 0.976471, 0.192157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "shape_cloud"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:radial_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MagicParticles:radial_accel_random")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MagicParticles:orbit_velocity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MagicParticles:orbit_velocity_random")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MagicParticles:tangential_accel")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MagicParticles:tangential_accel_random")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MagicParticles:initial_velocity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MagicParticles:initial_velocity_random")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MagicParticles:emission_shape")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MagicParticles:emission_sphere_radius")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "shape_sphere"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:orbit_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MagicParticles:orbit_velocity_random")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MagicParticles:radial_accel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MagicParticles:radial_accel_random")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MagicParticles:tangential_accel")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MagicParticles:tangential_accel_random")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MagicParticles:initial_velocity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MagicParticles:initial_velocity_random")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MagicParticles:emission_shape")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MagicParticles:emission_sphere_radius")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shape_wall"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:radial_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MagicParticles:radial_accel_random")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MagicParticles:orbit_velocity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MagicParticles:orbit_velocity_random")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MagicParticles:tangential_accel")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MagicParticles:tangential_accel_random")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MagicParticles:initial_velocity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MagicParticles:initial_velocity_random")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MagicParticles:emission_sphere_radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MagicParticles:emission_shape")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MagicParticles:emission_rect_extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAdd2" id=9]
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "shape_cloud"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "shape_sphere"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "shape_wall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/shape_cloud/node = SubResource( 10 )
+states/shape_cloud/position = Vector2( 206, 102 )
+states/shape_sphere/node = SubResource( 11 )
+states/shape_sphere/position = Vector2( 570, 103.25 )
+states/shape_wall/node = SubResource( 18 )
+states/shape_wall/position = Vector2( 375.5, 294.5 )
+transitions = [ "shape_cloud", "shape_sphere", SubResource( 12 ), "shape_sphere", "shape_cloud", SubResource( 13 ), "shape_sphere", "shape_wall", SubResource( 19 ), "shape_wall", "shape_sphere", SubResource( 20 ), "shape_wall", "shape_cloud", SubResource( 21 ), "shape_cloud", "shape_wall", SubResource( 22 ) ]
+start_node = "shape_cloud"
+
+[sub_resource type="AnimationNodeBlendTree" id=15]
+graph_offset = Vector2( 0, 421.875 )
+nodes/Add2/node = SubResource( 9 )
+nodes/Add2/position = Vector2( 420, 310 )
+nodes/Element/node = ExtResource( 2 )
+nodes/Element/position = Vector2( 190, 210 )
+nodes/Shape/node = SubResource( 14 )
+nodes/Shape/position = Vector2( 230, 430 )
+nodes/output/position = Vector2( 700, 360 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Element", "Add2", 1, "Shape" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="CircleShape2D" id=23]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 1, 1 )
 
 [node name="Spell" type="Node2D"]
+position = Vector2( 962.58, 549.326 )
+scale = Vector2( 20, 20 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="MagicParticles" type="CPUParticles2D" parent="."]
+amount = 300
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 1.0
+orbit_velocity = 1.0
+orbit_velocity_random = 1.0
+radial_accel = 30.0
+radial_accel_random = 1.0
+tangential_accel = 30.0
+tangential_accel_random = 1.0
+color = Color( 0.694118, 0.921569, 0.713726, 1 )
+
+[node name="SpellAnimations" type="AnimationPlayer" parent="."]
+anims/elem_earth = SubResource( 1 )
+anims/elem_fire = SubResource( 2 )
+anims/elem_null = SubResource( 3 )
+anims/elem_water = SubResource( 4 )
+anims/elem_wind = SubResource( 5 )
+anims/shape_cloud = SubResource( 6 )
+anims/shape_sphere = SubResource( 7 )
+anims/shape_wall = SubResource( 8 )
+
+[node name="SpellManager" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../SpellAnimations")
+active = true
+parameters/Add2/add_amount = 0.5
+parameters/Element/playback = SubResource( 16 )
+parameters/Shape/playback = SubResource( 17 )
+
+[node name="TestTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="SphereCollider" type="Area2D" parent="."]
+
+[node name="Circle" type="CollisionShape2D" parent="SphereCollider"]
+shape = SubResource( 23 )
+
+[node name="WallCollider" type="Area2D" parent="."]
+
+[node name="Rect" type="CollisionShape2D" parent="WallCollider"]
+shape = SubResource( 24 )
+
+[connection signal="timeout" from="TestTimer" to="." method="test"]

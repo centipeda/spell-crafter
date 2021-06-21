@@ -6,35 +6,35 @@
 [ext_resource path="res://Imports/Wizard Pack/Attack2.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Spellcaster.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.9295, 41.3133 )
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 231, 0, 231, 190 )
+region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 462, 0, 231, 190 )
+region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 693, 0, 231, 190 )
+region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 924, 0, 231, 190 )
+region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 924, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 1155, 0, 231, 190 )
@@ -79,49 +79,49 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1617, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 231, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 462, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 693, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 924, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1155, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1386, 0, 231, 190 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=23]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1617, 0, 231, 190 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "idle",
 "speed": 8.0
@@ -131,7 +131,7 @@ animations = [ {
 "name": "walk",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "attack",
 "speed": 14.0
@@ -151,10 +151,10 @@ __meta__ = {
 speed = 300
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 16 )
+shape = SubResource( 1 )
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="Player"]
-frames = SubResource( 7 )
+frames = SubResource( 24 )
 animation = "attack"
 frame = 2
 playing = true
