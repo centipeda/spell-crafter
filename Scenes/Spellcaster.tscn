@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Spellcaster.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Spell.tscn" type="PackedScene" id=2]
 
 [node name="Spellcaster" type="Node2D"]
+position = Vector2( 888.944, 474.633 )
 script = ExtResource( 1 )
+spell_proto = ExtResource( 2 )

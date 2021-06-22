@@ -1,5 +1,14 @@
 extends Node
 
+enum SPELL_STATE {
+    NONE,
+    GATHER,
+    HOLD,
+    HOLD_LAUNCH,
+    LAUNCH,
+    RELEASE
+   }
+
 enum RUNE {
     NULL,
     GATHER,
@@ -8,6 +17,7 @@ enum RUNE {
     TRANSMUTE_WATER,
     TRANSMUTE_EARTH,
     TRANSMUTE_WIND,
+    LAUNCH
      }
 
 enum ELEMENT {
@@ -32,17 +42,19 @@ const RUNE_NAME = {
     RUNE.TRANSMUTE_FLAME : "Flame Transmutation",
     RUNE.TRANSMUTE_WATER : "Water Transmutation",
     RUNE.TRANSMUTE_EARTH : "Earth Transmutation",
-    RUNE.TRANSMUTE_WIND : "Wind Transmutation"
+    RUNE.TRANSMUTE_WIND : "Wind Transmutation",
+    RUNE.LAUNCH : "Launching"
    }
 
 const RUNE_IMG = {
     RUNE.NULL : "runes/TestRune2.png",
     RUNE.GATHER : "runes/runes_Gathering.png",
-    RUNE.DISPERSE : "runes/Runes_Dispersal.png",
+    RUNE.DISPERSE : "runes/runes_Dispersal.png",
     RUNE.TRANSMUTE_FLAME : "runes/runes_FlameTransmutation.png",
     RUNE.TRANSMUTE_WATER : "runes/runes_Transmutation.png",
     RUNE.TRANSMUTE_EARTH : "runes/runes_Transmutation.png",
     RUNE.TRANSMUTE_WIND : "runes/runes_Transmutation.png",
+    RUNE.LAUNCH : "runes/runes_Launching.png",
    }
 
 const ELEM_ANIM = {
@@ -59,4 +71,4 @@ const SHAPE_ANIM = {
     SHAPE.WALL : "shape_wall"
    }
 
-var spell_runes = []
+var spell_runes = [RUNE.GATHER, RUNE.LAUNCH]

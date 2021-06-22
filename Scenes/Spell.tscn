@@ -1,23 +1,46 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Spell.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Elements.tres" type="AnimationNodeStateMachine" id=2]
+[ext_resource path="res://Scenes/MagicParticles.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "elem_earth"
-length = 2.0
-loop = true
+resource_name = "detonate"
 tracks/0/type = "value"
-tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/path = NodePath("MagicParticles:one_shot")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1e+06 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MagicParticles:explosiveness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.286275, 0.239216, 0.0392157, 1 ) ]
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MagicParticles:initial_velocity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 50.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -33,7 +56,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.976471, 0.192157, 0.192157, 1 ) ]
+"values": [ Color( 0.286275, 0.239216, 0.0392157, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -49,11 +72,26 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.694118, 0.921569, 0.713726, 1 ) ]
+"values": [ Color( 0.976471, 0.192157, 0.192157, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "elem_water"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.694118, 0.921569, 0.713726, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -69,8 +107,7 @@ tracks/0/keys = {
 "values": [ Color( 0.192157, 0.517647, 0.976471, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "elem_wind"
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -86,8 +123,22 @@ tracks/0/keys = {
 "values": [ Color( 0.270588, 0.976471, 0.192157, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "shape_cloud"
+[sub_resource type="Animation" id=31]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:scale_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("MagicParticles:radial_accel")
@@ -210,8 +261,7 @@ tracks/9/keys = {
 "values": [ 5.0 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "shape_sphere"
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("MagicParticles:orbit_velocity")
@@ -334,8 +384,7 @@ tracks/9/keys = {
 "values": [ 5.0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "shape_wall"
+[sub_resource type="Animation" id=9]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("MagicParticles:radial_accel")
@@ -470,21 +519,50 @@ tracks/10/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="AnimationNodeAdd2" id=9]
+[sub_resource type="Animation" id=28]
+resource_name = "start_up"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("MagicParticles:scale_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.01, 1.0 ]
+}
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeOneShot" id=11]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "detonate"
+
+[sub_resource type="AnimationNodeAdd2" id=10]
+
+[sub_resource type="AnimationNodeOneShot" id=33]
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "fade_out"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "shape_cloud"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "shape_sphere"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "shape_wall"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 xfade_time = 1.0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
@@ -496,50 +574,67 @@ xfade_time = 1.0
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 xfade_time = 1.0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-xfade_time = 1.0
-
-[sub_resource type="AnimationNodeStateMachine" id=14]
-states/shape_cloud/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=22]
+states/shape_cloud/node = SubResource( 13 )
 states/shape_cloud/position = Vector2( 206, 102 )
-states/shape_sphere/node = SubResource( 11 )
+states/shape_sphere/node = SubResource( 14 )
 states/shape_sphere/position = Vector2( 570, 103.25 )
-states/shape_wall/node = SubResource( 18 )
+states/shape_wall/node = SubResource( 15 )
 states/shape_wall/position = Vector2( 375.5, 294.5 )
-transitions = [ "shape_cloud", "shape_sphere", SubResource( 12 ), "shape_sphere", "shape_cloud", SubResource( 13 ), "shape_sphere", "shape_wall", SubResource( 19 ), "shape_wall", "shape_sphere", SubResource( 20 ), "shape_wall", "shape_cloud", SubResource( 21 ), "shape_cloud", "shape_wall", SubResource( 22 ) ]
+transitions = [ "shape_cloud", "shape_sphere", SubResource( 16 ), "shape_sphere", "shape_cloud", SubResource( 17 ), "shape_sphere", "shape_wall", SubResource( 18 ), "shape_wall", "shape_sphere", SubResource( 19 ), "shape_wall", "shape_cloud", SubResource( 20 ), "shape_cloud", "shape_wall", SubResource( 21 ) ]
 start_node = "shape_cloud"
 
-[sub_resource type="AnimationNodeBlendTree" id=15]
-graph_offset = Vector2( 0, 421.875 )
-nodes/Add2/node = SubResource( 9 )
-nodes/Add2/position = Vector2( 420, 310 )
+[sub_resource type="AnimationNodeOneShot" id=30]
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "start_up"
+
+[sub_resource type="AnimationNodeBlendTree" id=23]
+graph_offset = Vector2( 0, 167.914 )
+nodes/Detonate/node = SubResource( 12 )
+nodes/Detonate/position = Vector2( 480, 480 )
+"nodes/Detonate Override/node" = SubResource( 11 )
+"nodes/Detonate Override/position" = Vector2( 680, 290 )
 nodes/Element/node = ExtResource( 2 )
 nodes/Element/position = Vector2( 190, 210 )
-nodes/Shape/node = SubResource( 14 )
-nodes/Shape/position = Vector2( 230, 430 )
-nodes/output/position = Vector2( 700, 360 )
-node_connections = [ "output", 0, "Add2", "Add2", 0, "Element", "Add2", 1, "Shape" ]
+nodes/ElementShape/node = SubResource( 10 )
+nodes/ElementShape/position = Vector2( 420, 230 )
+nodes/Fadeout/node = SubResource( 32 )
+nodes/Fadeout/position = Vector2( 950, 480 )
+"nodes/Fadeout Override/node" = SubResource( 33 )
+"nodes/Fadeout Override/position" = Vector2( 1130, 290 )
+nodes/Shape/node = SubResource( 22 )
+nodes/Shape/position = Vector2( 190, 350 )
+nodes/Startup/node = SubResource( 29 )
+nodes/Startup/position = Vector2( 710, 480 )
+"nodes/Startup Override/node" = SubResource( 30 )
+"nodes/Startup Override/position" = Vector2( 900, 290 )
+nodes/output/position = Vector2( 1420, 300 )
+node_connections = [ "output", 0, "Fadeout Override", "Fadeout Override", 0, "Startup Override", "Fadeout Override", 1, "Fadeout", "Startup Override", 0, "Detonate Override", "Startup Override", 1, "Startup", "ElementShape", 0, "Element", "ElementShape", 1, "Shape", "Detonate Override", 0, "ElementShape", "Detonate Override", 1, "Detonate" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
-[sub_resource type="CircleShape2D" id=23]
+[sub_resource type="CircleShape2D" id=26]
 radius = 5.0
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 1, 1 )
 
 [node name="Spell" type="Node2D"]
-position = Vector2( 962.58, 549.326 )
-scale = Vector2( 20, 20 )
+scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_vertical_guides_": [  ]
 }
+base_speed = 200
 
 [node name="MagicParticles" type="CPUParticles2D" parent="."]
 amount = 300
+lifetime = 0.75
+lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2( 0, 0 )
@@ -553,39 +648,46 @@ radial_accel = 30.0
 radial_accel_random = 1.0
 tangential_accel = 30.0
 tangential_accel_random = 1.0
+scale_amount = 0.01
 color = Color( 0.694118, 0.921569, 0.713726, 1 )
+script = ExtResource( 3 )
 
 [node name="SpellAnimations" type="AnimationPlayer" parent="."]
-anims/elem_earth = SubResource( 1 )
-anims/elem_fire = SubResource( 2 )
-anims/elem_null = SubResource( 3 )
-anims/elem_water = SubResource( 4 )
-anims/elem_wind = SubResource( 5 )
-anims/shape_cloud = SubResource( 6 )
-anims/shape_sphere = SubResource( 7 )
-anims/shape_wall = SubResource( 8 )
+anims/detonate = SubResource( 1 )
+anims/elem_earth = SubResource( 2 )
+anims/elem_fire = SubResource( 3 )
+anims/elem_null = SubResource( 4 )
+anims/elem_water = SubResource( 5 )
+anims/elem_wind = SubResource( 6 )
+anims/fade_out = SubResource( 31 )
+anims/shape_cloud = SubResource( 7 )
+anims/shape_sphere = SubResource( 8 )
+anims/shape_wall = SubResource( 9 )
+anims/start_up = SubResource( 28 )
 
 [node name="SpellManager" type="AnimationTree" parent="."]
-tree_root = SubResource( 15 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../SpellAnimations")
 active = true
-parameters/Add2/add_amount = 0.5
-parameters/Element/playback = SubResource( 16 )
-parameters/Shape/playback = SubResource( 17 )
+"parameters/Detonate Override/active" = false
+parameters/Element/playback = SubResource( 24 )
+parameters/ElementShape/add_amount = 0.5
+"parameters/Fadeout Override/active" = false
+parameters/Shape/playback = SubResource( 25 )
+"parameters/Startup Override/active" = false
 
 [node name="TestTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="SphereCollider" type="Area2D" parent="."]
 
 [node name="Circle" type="CollisionShape2D" parent="SphereCollider"]
-shape = SubResource( 23 )
+shape = SubResource( 26 )
 
 [node name="WallCollider" type="Area2D" parent="."]
 
 [node name="Rect" type="CollisionShape2D" parent="WallCollider"]
-shape = SubResource( 24 )
+shape = SubResource( 27 )
 
 [connection signal="timeout" from="TestTimer" to="." method="test"]

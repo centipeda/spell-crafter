@@ -1,148 +1,21 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Imports/Wizard Pack/Run.png" type="Texture" id=1]
-[ext_resource path="res://Imports/Wizard Pack/Idle.png" type="Texture" id=2]
+[ext_resource path="res://Runes/TestRune2.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=3]
-[ext_resource path="res://Imports/Wizard Pack/Attack2.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Spellcaster.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 18.9295, 41.3133 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 231, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 462, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 693, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 924, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 1155, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 231, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 462, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 693, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 924, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1155, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1386, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1617, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 231, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 462, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 693, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 924, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1155, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1386, 0, 231, 190 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1617, 0, 231, 190 )
-
-[sub_resource type="SpriteFrames" id=24]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "idle",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "walk",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "attack",
-"speed": 14.0
-} ]
+extents = Vector2( 28.7474, 46.3086 )
 
 [node name="SpellRoom" type="Node2D"]
 position = Vector2( -0.594604, 1 )
 scale = Vector2( 2, 2 )
 
+[node name="SpellHolder" type="Node2D" parent="."]
+position = Vector2( 450, 262.064 )
+
 [node name="Player" type="Area2D" parent="."]
-position = Vector2( 449.792, 262.064 )
+position = Vector2( 450, 262.064 )
 gravity_vec = Vector2( 0, 0 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -151,15 +24,14 @@ __meta__ = {
 speed = 300
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="Player"]
+rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="PlayerSprite" type="AnimatedSprite" parent="Player"]
-frames = SubResource( 24 )
-animation = "attack"
-frame = 2
-playing = true
-offset = Vector2( 3, 0 )
-
 [node name="Spellcaster" parent="Player" instance=ExtResource( 5 )]
+position = Vector2( 60, 0 )
+spell_holder = NodePath("../../SpellHolder")
 
-[connection signal="animation_finished" from="Player/PlayerSprite" to="Player" method="_on_PlayerSprite_animation_finished"]
+[node name="Sprite" type="Sprite" parent="Player"]
+rotation = 1.5708
+scale = Vector2( 0.0680063, 0.0680063 )
+texture = ExtResource( 2 )
